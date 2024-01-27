@@ -44,10 +44,12 @@ class NFTDetailView: UIView {
         imageViewRatioConstraint = imageView.heightAnchor.constraint(equalTo: containerStackView.widthAnchor, multiplier: 1.0)
         
         nameLabel = UILabel()
+        nameLabel.numberOfLines = 0
         nameLabel.textAlignment = .center
         nameLabel.font = UIFont.boldSystemFont(ofSize: 17.0)
         containerStackView.addArrangedSubview(nameLabel)
         descriptionLabel = UILabel()
+        descriptionLabel.numberOfLines = 0
         descriptionLabel.textAlignment = .center
         descriptionLabel.font = UIFont.systemFont(ofSize: 14.0)
         containerStackView.addArrangedSubview(descriptionLabel)
