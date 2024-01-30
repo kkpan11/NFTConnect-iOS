@@ -7,19 +7,25 @@ NFTConnect-iOS is written in Swift that utilizes data from [Alchemy](https://www
 
 ### MVVM-C
 ```mermaid
-graph TD
-    subgraph Coordinator;
-        AppDelegate --> NFTListCoordinator;
-        NFTListCoordinator --> NFTDetailCoordinator;
-        NFTDetailCoordinator --> OpenWeb;
+flowchart TD
+    subgraph Coordinator
+        AppDelegate --> NFTListCoordinator
+        NFTListCoordinator --> NFTDetailCoordinator
+        NFTDetailCoordinator --> OpenWeb
     end;
-    subgraph List Scene;
-        NFTListCollectionViewProvider -- View State Closure --> NFTListViewController;
-        NFTListViewModel -- ViewModel State Closure --> NFTListViewController;
+    subgraph List Scene
+        NFTListCollectionViewProvider -- View State Closure --> NFTListViewController
+        NFTListViewModel -- ViewModel State Closure --> NFTListViewController
     end;
-    subgraph Detail Scene;
-        NFTDetailViewModel -- ViewModel State Closure --> NFTDetailViewController;
-        NFTDetailViewProvider -- View State Closure --> NFTDetailViewController;
+    subgraph Detail Scene
+        NFTDetailViewModel -- ViewModel State Closure --> NFTDetailViewController
+        NFTDetailViewProvider -- View State Closure --> NFTDetailViewController
+    end;
+    subgraph API Service
+        viewModels["`NFTListViewModel NFTDetailViewModel`"]
+        APIHandler --> NFTRepository
+        NFTRepository --> NFTDataStore
+        NFTDataStore --> viewModels
     end;
 ```
 
